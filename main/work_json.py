@@ -1,5 +1,6 @@
 import json
 import os
+from tabulate import tabulate
 
 brands_map = []
 brands_file = 'brands.json'
@@ -60,6 +61,8 @@ def load_categories():
         data = json.loads(file_content)
         for c in data:
             categories_map.append(c)
+
+
 
 
 load_brand()
@@ -253,8 +256,44 @@ def create_product():
             with open(products_file, 'w', encoding='utf-8') as file:
                 json.dump(products_map, file, ensure_ascii=False)
 
+            option = input("Deseja continuar removendo (s/n): ")
+            if option == "n":
+                break
         except ValueError as e:
             print(f"{e}")
+
+
+def search_product():
+    if len(brands_map) == 0:
+        print("Falha na leitura: Não há marcas")
+        return False
+
+    if len(categories_map) == 0:
+        print("Falha na leitura: Não há categorias")
+        return False
+
+    brand = request_brand()
+    category = request_category()
+
+    if len(products_map) == 0:
+        print("Falha na leitura: Não há produtos")
+        return False
+
+    filter_list = []
+
+    for product in products_map:
+        if product['category'] == category and product['brand'] == brand:
+            filter_list.append(product)
+
+    size = len(filter_list)
+    if size == 0:
+        print("Não há produtos registrados com essa marca e categoria")
+        return False
+
+    print(f'Há {size} de produtos registrados com essa marca e categoria, Confira: \n')
+    headers = ["Marca", "Categoria", "Nome", "Cor", "Preço"]
+    rows = [[p["brand"], p["category"], p["name"], p["color"], p["price"]] for p in filter_list]
+    print(tabulate(rows, headers=headers, tablefmt="pretty"))
 
 
 def get_message():
@@ -325,6 +364,8 @@ while True:
 
         if second_choice == '1':
             create_product()
+        elif second_choice == "2":
+            search_product()
         elif second_choice == '4':
             for product in products_map:
                 print(f'- {product}')
