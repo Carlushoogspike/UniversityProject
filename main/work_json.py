@@ -63,8 +63,6 @@ def load_categories():
             categories_map.append(c)
 
 
-
-
 load_brand()
 load_categories()
 
@@ -226,10 +224,7 @@ def create_product():
 
             product_name = input("Digite o nome do produto: ")
 
-            if contains_digit(product_name):
-                raise ValueError(not_number_in_place)
-
-            color = input("Digite o color do produto: ")
+            color = input("Digite o cor do produto: ")
             if contains_digit(color):
                 raise ValueError(not_number_in_place)
 
@@ -369,4 +364,3 @@ while True:
         elif second_choice == '4':
             for product in products_map:
                 print(f'- {product}')
-

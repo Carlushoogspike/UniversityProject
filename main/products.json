@@ -1,1 +1,30 @@
-[{"brand": "Samsung", "category": "Laptop", "name": "Air", "color": "Preto", "price": 12000}, {"brand": "Samsung", "category": "Laptop", "name": "Rock", "color": "Silver", "price": 1200}]
+[
+  {
+    "brand": "Nokia",
+    "category": "Celular",
+    "name": "XPG",
+    "color": "Azul",
+    "price": 20193
+  },
+  {
+    "brand": "Sony",
+    "category": "Celular",
+    "name": "Teste",
+    "color": "Azul",
+    "price": 1313
+  },
+  {
+    "brand": "Nokia",
+    "category": "Celular",
+    "name": "1",
+    "color": "Testando",
+    "price": 134141
+  },
+  {
+    "brand": "Nokia",
+    "category": "Celular",
+    "name": "Tafda",
+    "color": "ajkofbjao",
+    "price": 123
+  }
+]
